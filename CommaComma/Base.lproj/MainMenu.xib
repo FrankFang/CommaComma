@@ -13,8 +13,9 @@
         <customObject id="-3" userLabel="Application"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="CommaComma" customModuleProvider="target">
             <connections>
-                <outlet property="convertButton" destination="HNU-Zl-bBd" id="Bmt-MF-G0Z"/>
+                <outlet property="lowerView" destination="8db-fF-wEB" id="Z3S-M9-Uag"/>
                 <outlet property="t" destination="0ma-5M-vcJ" id="5ih-yH-kOo"/>
+                <outlet property="upperView" destination="xrr-Wt-4qw" id="RcP-OX-tPb"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -695,6 +696,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" size="12" name="STHeitiSC-Light"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="convertFromHalfToFull:" target="Voe-Tx-rLC" id="ESp-0F-d8L"/>
+                                </connections>
                             </button>
                             <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8db-fF-wEB">
                                 <rect key="frame" x="20" y="20" width="579" height="198"/>
