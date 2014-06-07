@@ -13,6 +13,10 @@
         <customObject id="-3" userLabel="Application"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="CommaComma" customModuleProvider="target">
             <connections>
+                <outlet property="convertButton" destination="HNU-Zl-bBd" id="Bmt-MF-G0Z"/>
+                <outlet property="originalText" destination="J42-RG-FMu" id="RUH-HS-JeI"/>
+                <outlet property="resultText" destination="K4B-er-052" id="zY7-77-yTR"/>
+                <outlet property="t" destination="0ma-5M-vcJ" id="5ih-yH-kOo"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -672,32 +676,9 @@
             <value key="minSize" type="size" width="800" height="488"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="800" height="488"/>
-                <autoresizingMask key="autoresizingMask"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="da9-Nh-hvw">
-                        <rect key="frame" x="621" y="-1" width="180" height="490"/>
-                        <clipView key="contentView" id="lkh-d4-vG1">
-                            <rect key="frame" x="1" y="1" width="166" height="79"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <view fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ocm-yo-NF7">
-                                    <rect key="frame" x="0.0" y="0.0" width="166" height="79"/>
-                                </view>
-                            </subviews>
-                        </clipView>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="180" id="VYs-Js-Xep"/>
-                        </constraints>
-                        <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="xoC-Mv-mhl">
-                            <rect key="frame" x="1" y="80" width="166" height="15"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="OXj-iJ-ct9">
-                            <rect key="frame" x="167" y="1" width="15" height="79"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                    </scrollView>
-                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="E5w-oB-mib">
+                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E5w-oB-mib">
                         <rect key="frame" x="0.0" y="0.0" width="619" height="488"/>
                         <subviews>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N7O-Dv-DoX">
@@ -709,27 +690,138 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HNU-Zl-bBd">
-                                <rect key="frame" x="279" y="234" width="60" height="19"/>
-                                <buttonCell key="cell" type="roundRect" title="转换" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" sound="Glass" inset="2" id="Kgf-73-ZTp">
+                                <rect key="frame" x="207" y="234" width="86" height="19"/>
+                                <buttonCell key="cell" type="roundRect" title="全角转为半角" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" sound="Glass" inset="2" id="Kgf-73-ZTp">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="cellTitle"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="convertFromFullToHalf:" target="Voe-Tx-rLC" id="lH7-ye-a4d"/>
+                                </connections>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K4B-er-052">
+                                <rect key="frame" x="18" y="20" width="583" height="194"/>
+                                <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" alignment="left" allowsEditingTextAttributes="YES" id="BvD-ta-9GP">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gxx-UF-a7i">
+                                <rect key="frame" x="320" y="234" width="86" height="19"/>
+                                <buttonCell key="cell" type="roundRect" title="半角转为全角" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" sound="Glass" inset="2" id="fUC-NA-jxW">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" size="12" name="STHeitiSC-Light"/>
                                 </buttonCell>
                             </button>
                         </subviews>
                     </customView>
+                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IqH-LS-iqC">
+                        <rect key="frame" x="627" y="0.0" width="173" height="488"/>
+                        <subviews>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gks-R2-vIs">
+                                <rect key="frame" x="18" y="419" width="48" height="18"/>
+                                <buttonCell key="cell" type="check" title="逗号" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="9px-xD-sjp">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" size="13" name="STHeitiSC-Light"/>
+                                </buttonCell>
+                                <connections>
+                                    <binding destination="Hov-j3-Ehq" name="value" keyPath="values.comma" id="9NY-hZ-XgO"/>
+                                </connections>
+                            </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fZB-1V-2BB">
+                                <rect key="frame" x="18" y="452" width="48" height="18"/>
+                                <buttonCell key="cell" type="check" title="句号" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="wZR-CR-OE5">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" size="13" name="STHeitiSC-Light"/>
+                                </buttonCell>
+                                <connections>
+                                    <binding destination="Hov-j3-Ehq" name="value" keyPath="values.period" id="uUB-1p-GPT"/>
+                                </connections>
+                            </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E3P-Pd-0rr">
+                                <rect key="frame" x="18" y="352" width="48" height="18"/>
+                                <buttonCell key="cell" type="check" title="冒号" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="DNQ-Jb-Tx5">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" size="13" name="STHeitiSC-Light"/>
+                                </buttonCell>
+                                <connections>
+                                    <binding destination="Hov-j3-Ehq" name="value" keyPath="values.colon" id="r2G-iH-rLy"/>
+                                </connections>
+                            </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UN8-Tt-Usi">
+                                <rect key="frame" x="18" y="386" width="61" height="18"/>
+                                <buttonCell key="cell" type="check" title="感叹号" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="6Gr-Rj-9o6">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" size="13" name="STHeitiSC-Light"/>
+                                </buttonCell>
+                                <connections>
+                                    <binding destination="Hov-j3-Ehq" name="value" keyPath="values.exclamation" id="Mw7-gc-s5r"/>
+                                </connections>
+                            </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qN0-me-6tC">
+                                <rect key="frame" x="18" y="255" width="61" height="18"/>
+                                <buttonCell key="cell" type="check" title="单引号" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="nwV-HF-HWn">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" size="13" name="STHeitiSC-Light"/>
+                                </buttonCell>
+                                <connections>
+                                    <binding destination="Hov-j3-Ehq" name="value" keyPath="values.singleQuote" id="mS4-uq-JKp"/>
+                                </connections>
+                            </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="asl-9R-SyC">
+                                <rect key="frame" x="18" y="288" width="61" height="18"/>
+                                <buttonCell key="cell" type="check" title="双引号" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="URi-A6-fUD">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" size="13" name="STHeitiSC-Light"/>
+                                </buttonCell>
+                                <connections>
+                                    <binding destination="Hov-j3-Ehq" name="value" keyPath="values.doubleQuote" id="Vq7-S8-780"/>
+                                </connections>
+                            </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TG4-jw-6Nl">
+                                <rect key="frame" x="18" y="319" width="48" height="18"/>
+                                <buttonCell key="cell" type="check" title="问号" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Ben-hn-p0n">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" size="13" name="STHeitiSC-Light"/>
+                                </buttonCell>
+                                <connections>
+                                    <binding destination="Hov-j3-Ehq" name="value" keyPath="values.question" id="CUO-mT-OTG"/>
+                                </connections>
+                            </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0ma-5M-vcJ">
+                                <rect key="frame" x="18" y="222" width="48" height="18"/>
+                                <buttonCell key="cell" type="check" title="分号" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="XpW-ak-yhc">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" size="13" name="STHeitiSC-Light"/>
+                                </buttonCell>
+                                <connections>
+                                    <binding destination="Hov-j3-Ehq" name="value" keyPath="values.semicolon" id="oNc-Zs-BXm"/>
+                                </connections>
+                            </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y2S-nc-rmO">
+                                <rect key="frame" x="18" y="188" width="48" height="18"/>
+                                <buttonCell key="cell" type="check" title="括号" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="cuG-jK-t8P">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" size="13" name="STHeitiSC-Light"/>
+                                </buttonCell>
+                                <connections>
+                                    <binding destination="Hov-j3-Ehq" name="value" keyPath="values.bracket" id="Um7-F2-8o6"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                    </customView>
+                    <box autoresizesSubviews="NO" horizontalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="weL-g5-uDc">
+                        <rect key="frame" x="620" y="0.0" width="5" height="488"/>
+                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <font key="titleFont" metaFont="system"/>
+                    </box>
                 </subviews>
-                <constraints>
-                    <constraint firstItem="E5w-oB-mib" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" id="5Jq-e8-Je0"/>
-                    <constraint firstAttribute="bottom" secondItem="da9-Nh-hvw" secondAttribute="bottom" constant="-1" id="9lQ-8D-0DK"/>
-                    <constraint firstAttribute="trailing" secondItem="da9-Nh-hvw" secondAttribute="trailing" constant="-1" id="EVa-us-G2Z"/>
-                    <constraint firstItem="da9-Nh-hvw" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="-1" id="WpN-NI-5m8"/>
-                    <constraint firstItem="E5w-oB-mib" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" id="esr-Hb-cuK"/>
-                    <constraint firstAttribute="bottom" secondItem="E5w-oB-mib" secondAttribute="bottom" id="fkI-PH-JwU"/>
-                    <constraint firstItem="da9-Nh-hvw" firstAttribute="leading" secondItem="E5w-oB-mib" secondAttribute="trailing" constant="2" id="oBI-Qs-fc7"/>
-                </constraints>
             </view>
             <point key="canvasLocation" x="300" y="267"/>
         </window>
+        <userDefaultsController representsSharedInstance="YES" id="Hov-j3-Ehq"/>
     </objects>
     <resources>
         <sound name="Glass"/>
